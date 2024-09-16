@@ -6,7 +6,7 @@ function InAPP(versionCliente) {
         location.reload();
     } else {
         // Verificar si el elemento existe y si la versión del cliente es correcta
-        if (Elemento && versionCliente === versionNecesaria) {
+        if (versionCliente === versionNecesaria) {
         console.log('Versión correcta');
         } else {
         console.error('Versión incorrecta');
