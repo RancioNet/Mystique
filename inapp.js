@@ -1,7 +1,7 @@
 function InAPP(versionCliente) {
     var Download = document.getElementById('appActualizacion');
 
-    var versionNecesaria = '16/9/24';
+    var versionNecesaria = '17/9/24';
     if(versionCliente == '' || versionCliente == null) {
         location.reload();
     } else {
