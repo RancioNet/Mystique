@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="traductor.css">
+    <title>Traductor Mystique</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Traductor Mystique</h1>
+        <textarea id="inputText" placeholder="Introduce el texto a traducir..." oninput="toggleButtons()"></textarea>
+        <button id="translateToMystiqueBtn" onclick="translateToMystique()" disabled>Traducir al Mystique</button>
+        <br><br>
+        <button id="translateToNormalBtn" onclick="translateToNormal()" disabled>Traducir al Abecedario Normal</button>
+        <div class="output" id="outputText"></div>
+        <br>
+        <button id="copyOutputBtn" onclick="copyText()" disabled>Copiar Resultado</button> <span id="Copy" style="display: none;">¡Copiado!</span>
+        <br><br>
+        <button onclick="clearText()" id="clearText">Limpiar Texto</button>
+    </div>
+    <script src="traductor.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/Traductor/sw.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(error) {
+                console.log('ServiceWorker registration failed: ', error);
+            });
+        }
+    </script>
+</body>
+</html>
