@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Traductor Mystique</title>
+    <title>Traductor Mystique 1.0</title>
 </head>
 <body>
     <div id="appActualizacion">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="container">
-        <h1>Traductor Mystique</h1>
+        <h1>Traductor Mystique 1.0</h1> <button><a href="2.0.html">Usar la version 2.0</a></button>
         <textarea id="inputText" placeholder="Introduce el texto a traducir..." oninput="toggleButtons()"></textarea>
         <button id="translateToMystiqueBtn" onclick="translateToMystique()" disabled>Traducir al Mystique</button>
         <br><br>
@@ -25,14 +25,5 @@
     </div>
     <script src="index.js"></script>
     <script src="inapp.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').then(function(registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(error) {
-                console.log('ServiceWorker registration failed: ', error);
-            });
-        }
-    </script>
 </body>
 </html>
