@@ -58,3 +58,7 @@ button:hover {
     justify-content: center; /* Centra el contenido horizontalmente si se usa display: flex */
     align-items: center; /* Centra el contenido verticalmente si se usa display: flex */
 }
+
+a {
+    text-decoration: none;
+}
