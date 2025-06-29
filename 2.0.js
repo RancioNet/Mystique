@@ -3,12 +3,12 @@
         function translate() {
             const inputText = document.getElementById('inputText').value;
             const outputText = document.getElementById('outputText');
-            
+
             const normalAlphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
             const mystiqueAlphabet = 'Խ™©®§¶Վ†‡‰ᵺՀթ¤¦¨ª«¬¯°±´µ¹²³';
-            
-            const specialChars = ['?', '!', '¿', '¡']; // Caracteres especiales para invertir
-            
+
+            const specialChars = ['?', '!', '¿', '¡'];
+
             let translatedText = '';
             let specialCharPositions = [];
             let normalCharPositions = [];
@@ -24,7 +24,7 @@
                 }
             }
 
-            // Traducir alfabeto
+            // Traducir letras
             let translatedNormalText = '';
             for (let i = 0; i < translatedText.length; i++) {
                 let char = translatedText[i];
@@ -41,7 +41,11 @@
                         translatedNormalText += char;
                     }
                 } else {
-                    index = mystiqueAlphabet.indexOf(upperChar);
+                    // 🔧 Corrección: buscar por char, mayúscula y minúscula
+                    index = mystiqueAlphabet.indexOf(char);
+                    if (index === -1) index = mystiqueAlphabet.indexOf(char.toUpperCase());
+                    if (index === -1) index = mystiqueAlphabet.indexOf(char.toLowerCase());
+
                     if (index !== -1) {
                         let translatedChar = normalAlphabet[index];
                         translatedNormalText += isLowerCase ? translatedChar.toLowerCase() : translatedChar;
@@ -63,13 +67,13 @@
                 let pos = normalCharPositions[i].position;
                 let char = normalCharPositions[i].char;
                 let numChar = parseInt(char, 10);
-                
+
                 if (toMystiqueAlphabet) {
                     numChar = (numChar + 2) % 10;
                 } else {
                     numChar = (numChar - 2 + 10) % 10;
                 }
-                
+
                 translatedNormalText = translatedNormalText.slice(0, pos) + numChar.toString() + translatedNormalText.slice(pos);
             }
 
@@ -100,7 +104,7 @@
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
                 document.getElementById('Copy').style = "display: content;";
-                setTimeout(function() {
+                setTimeout(function () {
                     document.getElementById('Copy').style = "display: none;";
                 }, 2500);
             }
