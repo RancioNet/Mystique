@@ -1,19 +1,19 @@
         let toMystiqueAlphabet = true;
 
+        const normalAlphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+        const mystiqueUpper = 'Խ™©®§¶Վ†‡‰ᵺՀԹ¤¦¨ª«¬¯°±´µ¹²³';
+        const mystiqueLower = 'ꞓ⟆℗℠٪̇ᴠ‼‽‱ᶨʜϯ₪̸҂º«⸮﹉⟁ꞇⱤ₄₅₆';
+
+        const specialChars = ['?', '!', '¿', '¡'];
+
         function translate() {
             const inputText = document.getElementById('inputText').value;
             const outputText = document.getElementById('outputText');
-
-            const normalAlphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
-            const mystiqueAlphabet = 'Խ™©®§¶Վ†‡‰ᵺՀթ¤¦¨ª«¬¯°±´µ¹²³';
-
-            const specialChars = ['?', '!', '¿', '¡'];
 
             let translatedText = '';
             let specialCharPositions = [];
             let normalCharPositions = [];
 
-            // Separar caracteres especiales y números
             for (let i = 0; i < inputText.length; i++) {
                 if (specialChars.includes(inputText[i])) {
                     specialCharPositions.push({ char: inputText[i], position: i });
@@ -24,7 +24,6 @@
                 }
             }
 
-            // Traducir letras
             let translatedNormalText = '';
             for (let i = 0; i < translatedText.length; i++) {
                 let char = translatedText[i];
@@ -35,34 +34,31 @@
                 if (toMystiqueAlphabet) {
                     index = normalAlphabet.indexOf(upperChar);
                     if (index !== -1) {
-                        let translatedChar = mystiqueAlphabet[index];
-                        translatedNormalText += isLowerCase ? translatedChar.toLowerCase() : translatedChar;
+                        translatedNormalText += isLowerCase ? mystiqueLower[index] : mystiqueUpper[index];
                     } else {
                         translatedNormalText += char;
                     }
                 } else {
-                    // 🔧 Corrección: buscar por char, mayúscula y minúscula
-                    index = mystiqueAlphabet.indexOf(char);
-                    if (index === -1) index = mystiqueAlphabet.indexOf(char.toUpperCase());
-                    if (index === -1) index = mystiqueAlphabet.indexOf(char.toLowerCase());
+                    index = mystiqueUpper.indexOf(char);
+                    if (index === -1) index = mystiqueLower.indexOf(char);
 
                     if (index !== -1) {
                         let translatedChar = normalAlphabet[index];
-                        translatedNormalText += isLowerCase ? translatedChar.toLowerCase() : translatedChar;
+                        translatedNormalText += (mystiqueLower.indexOf(char) !== -1)
+                            ? translatedChar.toLowerCase()
+                            : translatedChar;
                     } else {
                         translatedNormalText += char;
                     }
                 }
             }
 
-            // Reinsertar caracteres especiales invertidos
             for (let i = 0; i < specialCharPositions.length; i++) {
                 let pos = specialCharPositions[i].position;
                 let char = specialCharPositions[specialCharPositions.length - 1 - i].char;
                 translatedNormalText = translatedNormalText.slice(0, pos) + char + translatedNormalText.slice(pos);
             }
 
-            // Reinsertar números modificados
             for (let i = 0; i < normalCharPositions.length; i++) {
                 let pos = normalCharPositions[i].position;
                 let char = normalCharPositions[i].char;
