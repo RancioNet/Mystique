@@ -3,7 +3,7 @@ let toMystiqueAlphabet = true;
 const normalAlphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'; // 27 letras
 
 const mystiqueUpper = 'Խ™©®§¶Վ†‡‰ᵺՀԹ¤¦¨ª«¬¯°±´µ¹²³'; // 27 símbolos mayúsculas únicos
-const mystiqueLower = 'ꞓ⟆℗℠٪̇ᴠ‼‽‱ᶨʜϯ₪̸҂º«⸮﹉⟁ꞇⱤ₄'; // 27 símbolos minúsculas únicos
+const mystiqueLower = 'ꞓ⟆℗℠٪̇ᴠ‼‽‱ᶨʜϯ₪҂º⟡⸮﹉⟁ꞇⱤ₄₅₆⸸⫷'; // 27 símbolos minúsculas únicos
 
 const specialChars = ['?', '!', '¿', '¡'];
 
